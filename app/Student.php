@@ -1,0 +1,45 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Student extends Model
+{
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
+    public function entries() {
+        return $this->belongsToMany('App\Entry')->withTimestamps();
+    }
+
+    public function posts() {
+        return $this->belongsToMany('App\Post')->withTimestamps();
+    }
+
+    public function books() {
+        return $this->belongsToMany('App\Book')->withTimestamps();
+    }
+
+    public function updateStudent($request) {
+
+        $student = $this;
+
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->birthday = $request->birthday;
+        $student->grade_level_id = $request->grade_level;
+
+        $student->save();
+    }
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'birthday',
+        'grade_level_id',
+        'user_id'
+    ];
+}
