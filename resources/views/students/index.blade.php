@@ -5,7 +5,9 @@
 @endsection
 
 @section('pageTitleButton')
-    <a href="/students/create" class="btn btn-primary btn-block btn-sm">Add Student</a>
+    @if (count($students))
+        <a href="/students/create" class="btn btn-primary btn-block btn-sm">Add Student</a>
+    @endif
 @endsection
 
 @section('content')
@@ -16,6 +18,12 @@
             <li><a href="/students/{{ $student->id }}">{{ $student->first_name }} {{ $student->last_name }}</a></li>
         @endforeach
         </ul>
+    @else
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <a href="/students/create" class="btn btn-primary btn-block">Add Your First Student</a>
+            </div>
+        </div>
     @endif
     
 @endsection

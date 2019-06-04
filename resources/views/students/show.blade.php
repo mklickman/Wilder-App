@@ -23,7 +23,7 @@
     </p>
 
     <div class="row">
-        <form class="col" action="/students/{{ $student->id }}" method="POST">
+        <form class="col" id="delete-resource" action="/students/{{ $student->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this student?');">
             @csrf
             @method('DELETE')
             <input type="submit" class="btn btn-outline-danger btn-block" value="Delete Student">
