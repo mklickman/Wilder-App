@@ -3,18 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Entry;
-use Illuminate\Http\Request;
+use App\ActivityType;
 
-class EntryController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class EntriesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Entry $entry, ActivityType $activityType)
     {
-        //
+        return view('/entries/index', [
+            'entries' => Auth::user()->entries->all(),
+            'activityTypes' => Auth::user()->activityTypes->all()
+        ]);
     }
 
     /**

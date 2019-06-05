@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSoftDeletesToStudents extends Migration
+class RemoveUserIdFromEntries extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddSoftDeletesToStudents extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::table('entries', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddSoftDeletesToStudents extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
+        Schema::table('entries', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned();
         });
     }
 }

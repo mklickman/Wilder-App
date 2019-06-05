@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entry extends Model
 {
-    public function user() {
-        return $this->belongsTo('App\User');
+
+    public function activityType() {
+        return $this->belongsTo('App\ActivityType');
     }
 
     public function students() {

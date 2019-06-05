@@ -13,8 +13,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Student');
     }
 
+    public function activityTypes() {
+        return $this->hasMany('App\ActivityType');
+    }
+
     public function entries() {
-        return $this->hasMany('App\Entry');
+        return $this->hasManyThrough('App\Entry', 'App\ActivityType');
     }
 
     public function posts() {

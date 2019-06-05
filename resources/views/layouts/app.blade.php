@@ -90,7 +90,7 @@
                             <div class="list-group">
                                 <a href="/home" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'home' ? ' active' : '' }}">Dashboard</a>
                                 <a href="/students" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'students' ? ' active' : '' }}">Students</a>
-                                <a href="" class="list-group-item list-group-item-action">Activities</a>
+                                <a href="/entries" class="list-group-item list-group-item-action">Activities</a>
                                 <a href="" class="list-group-item list-group-item-action">Posts</a>
                                 <a href="" class="list-group-item list-group-item-action">Reading Lists</a>
                                 <a href="" class="list-group-item list-group-item-action">Attendance</a>
