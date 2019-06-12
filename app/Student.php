@@ -37,6 +37,13 @@ class Student extends Model
         $student->save();
     }
 
+    public function getInitialsAttribute() {
+        $firstInitial = substr($this->first_name, 0, 1);
+        $lastInitial = substr($this->last_name, 0, 1);
+
+        return "{$firstInitial}{$lastInitial}";
+    }
+
     protected $fillable = [
         'first_name',
         'last_name',

@@ -11,13 +11,34 @@
 @endsection
 
 @section('content')
-
     @if ($entries)
-        <ul>
-        @foreach($entries as $entry)
-            <li><a href="/entries/{{ $entry->id }}">{{ $entry->activityType->name }}</a></li>
-        @endforeach
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Activity Type</th>
+                    <th>Duration</th>
+                    <th>Students</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($entries as $entry)
+                    <tr>
+                        <td>{{ date('m/d/Y', strtotime($entry->entry_date)) }}</td>
+                        <td>{{ $entry->activityType->name }}</td>
+                        <td>{{ $entry->duration_hours }}:{{ $entry->duration_minutes }}</td>
+                        <td>
+                            @foreach($entry->students as $student)
+                                <span class="student-badge">{{ $student->initials }}</span>
+                                {{-- {{ $student->id }}) {{ $student->first_name }} {{ $student->last_name }}<br> --}}
+                            @endforeach
+                        </td>
+                        <td><a class="btn btn-outline-primary btn-block btn-sm" href="/entries/{{ $entry->id }}/edit">edit</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     @else
         <div class="row justify-content-center">
             <div class="col-sm-4">

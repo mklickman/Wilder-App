@@ -90,7 +90,7 @@
                             <div class="list-group">
                                 <a href="/home" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'home' ? ' active' : '' }}">Dashboard</a>
                                 <a href="/students" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'students' ? ' active' : '' }}">Students</a>
-                                <a href="/entries" class="list-group-item list-group-item-action">Activities</a>
+                                <a href="/entries" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'entries' ? ' active' : '' }}">Activities</a>
                                 <a href="" class="list-group-item list-group-item-action">Posts</a>
                                 <a href="" class="list-group-item list-group-item-action">Reading Lists</a>
                                 <a href="" class="list-group-item list-group-item-action">Attendance</a>
@@ -115,7 +115,12 @@
                                 <div class="card-body">
                                     @yield('content')
                                 </div>
+
                             </div>
+                            
+                            @hasSection('cardTrailer')
+                                @yield('cardTrailer')
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -126,5 +131,7 @@
         @hasSection('footerScripts')
             @yield('footerScripts')
         @endif
+
+        <script src="https://kit.fontawesome.com/7f7d93cafe.js"></script>
     </body>
 </html>

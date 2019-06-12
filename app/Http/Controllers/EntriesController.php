@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Entry;
 use App\ActivityType;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EntriesController extends Controller
 {
@@ -27,11 +31,11 @@ class EntriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Entry $entry, ActivityType $activityType)
+    public function index(Entry $entry)
     {
-        return view('/entries/index', [
-            'entries' => Auth::user()->entries->all(),
-            'activityTypes' => Auth::user()->activityTypes->all()
+        return view('entries/index', [
+            'entries' => Auth::user()->entriesByDate,
+            'activityTypes' => Auth::user()->activityTypes
         ]);
     }
 
@@ -42,7 +46,10 @@ class EntriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('entries/create', [
+            'students' => Auth::user()->students->all(),
+            'activityTypes' => Auth::user()->activityTypes->all()
+        ]);
     }
 
     /**
@@ -51,9 +58,29 @@ class EntriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ActivityType $activityType, Entry $entry)
     {
-        //
+        $request->validate([
+            'students' => 'required|array|min:1',
+            'activity_type' => 'required',
+            'activity_date' => 'required'
+        ]);
+
+        $entry = Entry::create([
+            'activity_type_id' => $request->activity_type,
+            'entry_date' => $request->activity_date,
+            'duration_hours' => $request->duration_hours,
+            'duration_minutes' => $request->duration_minutes,
+            'notes' => $request->notes
+        ]);
+
+        $entry->students()->attach($request->students);
+        
+        $entry->save();
+
+        flash("Entry saved successfully");
+
+        return redirect('/entries');
     }
 
     /**
@@ -73,9 +100,14 @@ class EntriesController extends Controller
      * @param  \App\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entry $entry)
+    public function edit(Entry $entry, ActivityType $activityType)
     {
-        //
+        return view('entries/edit', [
+            'entry' => $entry,
+            'entry_date' => Carbon::create($entry->entry_date)->toDateString(),
+            'students' => Auth::user()->students->all(),
+            'activity_types' => $activityType->all()
+        ]);
     }
 
     /**
@@ -87,7 +119,17 @@ class EntriesController extends Controller
      */
     public function update(Request $request, Entry $entry)
     {
-        //
+        $request->validate([
+            'students' => 'required|array|min:1',
+            'activity_type' => 'required',
+            'activity_date' => 'required'
+        ]);
+        
+        $entry->find($entry->id)->updateEntry($request);
+
+        flash("Entry successfully updated");
+
+        return redirect('/entries');
     }
 
     /**
@@ -98,6 +140,10 @@ class EntriesController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        //
+        $entry->delete();
+
+        flash('Entry deleted');
+
+        return redirect('/entries');
     }
 }

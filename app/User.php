@@ -21,6 +21,10 @@ class User extends Authenticatable
         return $this->hasManyThrough('App\Entry', 'App\ActivityType');
     }
 
+    public function entriesByDate() {
+        return $this->entries()->orderBy('entry_date', 'desc');
+    }
+
     public function posts() {
         return $this->hasMany('App\Post');
     }
