@@ -11646,6 +11646,23 @@ a.text-dark:focus {
   }
 }
 
+@font-face {
+  font-family: 'sandbrush';
+  src: url("/fonts/sandbrush.woff2") format("woff2"), url("/fonts/sandbrush.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar-brand {
+  color: #1a844f !important;
+  font-family: 'sandbrush';
+  font-size: 4.5rem;
+  line-height: 1;
+  padding: 0;
+  position: relative;
+  top: 5px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -11665,7 +11682,6 @@ fieldset {
 }
 
 .student-badge {
-  background: #aaa;
   width: 28px;
   height: 28px;
   display: inline-block;

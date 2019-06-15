@@ -23,3 +23,4 @@ Route::resource('students', 'StudentsController');
 
 Route::resource('entries', 'EntriesController');
 
+Route::resource('posts', 'PostsController');

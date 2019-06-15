@@ -91,14 +91,15 @@
                                 <a href="/home" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'home' ? ' active' : '' }}">Dashboard</a>
                                 <a href="/students" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'students' ? ' active' : '' }}">Students</a>
                                 <a href="/entries" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'entries' ? ' active' : '' }}">Activities</a>
-                                <a href="" class="list-group-item list-group-item-action">Posts</a>
-                                <a href="" class="list-group-item list-group-item-action">Reading Lists</a>
-                                <a href="" class="list-group-item list-group-item-action">Attendance</a>
+                                <a href="/posts" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'posts' ? ' active' : '' }}">Field Trips</a>
+                                <a href="" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'reading-lists' ? ' active' : '' }}">Reading Lists</a>
+                                <a href="" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'attendance' ? ' active' : '' }}">Attendance</a>
                             </div>
                         </div>
 
                         <div class="page-content col">
-                            <div class="card">
+                            @yield('content')
+                            {{-- <div class="card">
                                 @hasSection('pageTitle')
                                     @hasSection('pageTitleButton')
                                         <div class="card-header">
@@ -120,7 +121,7 @@
                             
                             @hasSection('cardTrailer')
                                 @yield('cardTrailer')
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
