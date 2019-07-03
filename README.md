@@ -1,4 +1,4 @@
-# Wilder-App
+# Wilder
 Homeschool activity tracking for the wild + free generation
 
 ---
