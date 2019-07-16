@@ -11677,6 +11677,10 @@ a.text-dark:focus {
   margin-bottom: 0;
 }
 
+img {
+  max-width: 100% !important;
+}
+
 fieldset {
   margin-bottom: 2rem;
 }
@@ -11691,5 +11695,177 @@ fieldset {
   font-weight: bold;
   border-radius: 25px;
   font-size: 0.8rem;
+}
+
+.photo-edit-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-right: -1.5%;
+}
+
+.photo-edit-grid .photo {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  position: relative;
+  width: 23.5%;
+  height: 9rem;
+  margin-right: 1.5%;
+  margin-bottom: 0.75rem;
+}
+
+.photo-edit-grid .photo input[type="checkbox"] {
+  position: absolute;
+  right: 0.45rem;
+  top: 0.75rem;
+  cursor: pointer;
+  z-index: 50;
+  zoom: 2.7;
+  opacity: 0;
+}
+
+.photo-edit-grid .photo .image-overlay {
+  border-radius: 4px;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.photo-edit-grid .photo img {
+  border-radius: 4px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  float: left;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.photo-edit-grid .photo i.fas {
+  display: none;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border-radius: 100px;
+  border: 2px solid white;
+  width: 30px;
+  height: 30px;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.photo-edit-grid .photo i.fas:before {
+  color: white;
+  font-size: 1rem;
+}
+
+.photo-edit-grid .photo:hover .image-overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.photo-edit-grid .photo:hover img {
+  position: relative;
+  z-index: 1;
+}
+
+.photo-edit-grid .photo:hover i.fas {
+  display: block;
+  z-index: 20;
+}
+
+.photo-edit-grid .photo input[type="checkbox"]:checked ~ img {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9);
+          transform: scale3d(0.9, 0.9, 0.9);
+}
+
+.photo-edit-grid .photo input[type="checkbox"]:checked ~ .image-overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  -webkit-transform: scale3d(0.9, 0.9, 0.9);
+          transform: scale3d(0.9, 0.9, 0.9);
+}
+
+.photo-edit-grid .photo input[type="checkbox"]:checked ~ i.fas {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  display: block;
+  z-index: 20;
+}
+
+.photo-edit-grid .photo input[type="checkbox"]:checked ~ i.fas:before {
+  display: inline-block;
+  color: white;
+}
+
+.photo-edit-grid .photo.add-more {
+  cursor: pointer;
+}
+
+.photo-edit-grid .photo.add-more:hover:before {
+  display: none;
+}
+
+.photo-edit-grid .photo.add-more:hover .fas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.photo-edit-grid .photo.add-more:hover .fas:before {
+  display: block;
+  color: #ccc !important;
+}
+
+.photo-edit-grid .photo.add-more .fas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px dashed #bbb;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.photo-edit-grid .photo.add-more .fas:before {
+  color: #ccc;
+  font-size: 2.5rem;
+}
+
+.user-nav .list-group {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 25px;
 }
 

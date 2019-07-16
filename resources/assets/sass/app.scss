@@ -1,56 +1,6 @@
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import "base/variables";
+@import "base/global";
 
-// Variables
-@import "variables";
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-@font-face {
-  font-family: 'sandbrush';
-  src: url('/fonts/sandbrush.woff2') format('woff2'),
-       url('/fonts/sandbrush.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.navbar-brand {
-  color: #1a844f !important;
-  font-family: 'sandbrush';
-  font-size: 4.5rem;
-  line-height: 1;
-  padding: 0;
-  position: relative;
-  top: 5px;
-}
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-.container-fluid {
-  max-width: 1024px;
-}
-
-.card-body :last-child {
-  margin-bottom: 0;
-}
-
-fieldset {
-  margin-bottom: 2rem;
-}
-
-.student-badge {
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  line-height: 29px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  border-radius: 25px;
-  font-size: 0.8rem;
-}
+@import "components/photo-edit-grid";
+@import "components/user-nav";

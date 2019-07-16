@@ -57,6 +57,11 @@ class PostsController extends Controller
             'post_content' => $request->post_content
         ]);
 
+        if ($request->hasFile('post_image')) {
+            $filename = time() . '_' . $request->file('post_image')->getClientOriginalName();
+            $post->addMedia($request->file('post_image'))->setFileName($filename)->toMediaCollection();
+        }
+
         $post->students()->attach($request->students);
         
         $post->save();

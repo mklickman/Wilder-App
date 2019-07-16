@@ -12,11 +12,23 @@
     </div>
 
     @if ($posts)
-        <ul>
         @foreach($posts as $post)
-            <li><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></li>
+            <div class="card mb-5">
+                @if ($post->getMedia()->count())
+                    <div class="card-img-top">
+                        @foreach($post->getMedia() as $img)
+                            <img src="/storage/{{ $img->id }}/{{ $img->file_name }}" alt="">
+                        @endforeach
+                    </div>
+                @endif
+                <div class="card-body">
+                    <div class="card-text">
+                        <h3><a href="/posts/{{ $post->id }}/edit">{{ $post->title }}</a></h3>
+                        <p>{{ $post->post_content }}</p>
+                    </div>
+                </div>
+            </div>
         @endforeach
-        </ul>
     @else
         <div class="row justify-content-center">
             <div class="col-sm-4">

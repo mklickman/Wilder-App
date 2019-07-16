@@ -19,6 +19,27 @@
                 @endif
 
                 <div class="form-group row">
+                    <div class="col">
+                        <div class="photo-edit-grid">
+                            {{-- @foreach ($post->getMedia() as $img) --}}
+                                {{-- <img src="/storage/{{ $img->id }}/{{ $img->file_name }}" alt="">    --}}
+                            {{-- @endforeach --}}
+                            @for($i = 0; $i < 10; $i++)
+                                <div class="photo">
+                                    <input type="checkbox" name="photos_to_delete" value="{{ $post->getMedia()[0]->id }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                    <span class="image-overlay"></span>
+                                    <img src="/storage/{{ $post->getMedia()[0]->id }}/{{ $post->getMedia()[0]->file_name }}" alt="">
+                                </div>
+                            @endfor
+                            <div class="photo add-more">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="post_title">Title</label>
                     <div class="col-sm-10">
                         <input type="text" name="post_title" id="post_title" class="form-control" value="{{ $post->title }}">

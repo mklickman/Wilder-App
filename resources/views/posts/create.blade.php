@@ -6,7 +6,7 @@
 
         <div class="card-body">
 
-            <form action="/posts" method="POST">
+            <form action="/posts" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 @if ($errors->any())
@@ -16,6 +16,13 @@
                         </div>
                     @endforeach
                 @endif
+
+                <div class="form-group row">
+                    <label for="post_image" class="col-sm-2 col-form-label">Photo</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="post_image">
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="post_title">Title</label>

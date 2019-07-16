@@ -86,42 +86,21 @@
                     @include('flash::message')
 
                     <div class="row">
-                        <div class="user-nav col-3">
-                            <div class="list-group">
-                                <a href="/home" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'home' ? ' active' : '' }}">Dashboard</a>
-                                <a href="/students" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'students' ? ' active' : '' }}">Students</a>
-                                <a href="/entries" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'entries' ? ' active' : '' }}">Activities</a>
-                                <a href="/posts" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'posts' ? ' active' : '' }}">Field Trips</a>
-                                <a href="" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'reading-lists' ? ' active' : '' }}">Reading Lists</a>
-                                <a href="" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'attendance' ? ' active' : '' }}">Attendance</a>
+                        @auth
+                            <div class="user-nav col-3">
+                                <div class="list-group">
+                                    <a href="/home" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'home' ? ' active' : '' }}">Dashboard</a>
+                                    <a href="/students" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'students' ? ' active' : '' }}">Students</a>
+                                    <a href="/entries" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'entries' ? ' active' : '' }}">Activities</a>
+                                    <a href="/posts" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'posts' ? ' active' : '' }}">Field Trip Journal</a>
+                                    <a href="" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'reading-lists' ? ' active' : '' }}">Reading Lists</a>
+                                    <a href="" class="list-group-item list-group-item-action{{ request()-> segment(1) == 'attendance' ? ' active' : '' }}">Attendance</a>
+                                </div>
                             </div>
-                        </div>
+                        @endauth
 
                         <div class="page-content col">
                             @yield('content')
-                            {{-- <div class="card">
-                                @hasSection('pageTitle')
-                                    @hasSection('pageTitleButton')
-                                        <div class="card-header">
-                                            <div class="row">
-                                                <div class="col-sm-9">@yield('pageTitle')</div>
-                                                <div class="col-sm-3">@yield('pageTitleButton')</div>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="card-header">@yield('pageTitle')</div>
-                                    @endif
-                                @endif
-                        
-                                <div class="card-body">
-                                    @yield('content')
-                                </div>
-
-                            </div>
-                            
-                            @hasSection('cardTrailer')
-                                @yield('cardTrailer')
-                            @endif --}}
                         </div>
                     </div>
                 </div>

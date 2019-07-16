@@ -12,6 +12,10 @@
         </div>
 
         <div class="card-body">
+            @foreach($post->getMedia() as $img)
+                <img src="/storage/{{ $img->id }}/{{ $img->file_name }}" alt="">
+            @endforeach
+
             <p><small><em>Posted on {{ $post->post_date }}</em></small></p>
             <p>{{ $post->post_content }}</p>
         </div>
