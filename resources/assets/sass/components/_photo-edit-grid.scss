@@ -114,6 +114,17 @@
         &.add-more {
             cursor: pointer;
 
+            input {
+                cursor: pointer;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 50;
+            }
+
             &:hover {
 
 
@@ -143,6 +154,7 @@
                 border: 2px dashed #bbb;
                 justify-content: center;
                 align-items: center;
+                z-index: 1;
 
                 &:before {
                     color: #ccc;

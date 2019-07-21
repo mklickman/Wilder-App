@@ -112,11 +112,17 @@ class PostsController extends Controller
             'post_date' => 'required'
         ]);
 
+        if(array_key_exists('photos_to_delete', $request)) {
+            foreach($request->photos_to_delete as $i) {
+                $post->find($post->id)->getMedia()->find($i)->delete();
+            }
+        }
+
         $post->find($post->id)->updatePost($request);
 
         flash("Post successfully updated");
 
-        return redirect($post);
+        return redirect('/posts/' . $post->id . '/edit');
     }
 
     /**

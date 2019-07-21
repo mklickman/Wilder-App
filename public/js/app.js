@@ -14212,7 +14212,19 @@ window.Vue = __webpack_require__(36);
 Vue.component('delete-resource', __webpack_require__(40));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
+});
+
+var photoGrid = new Vue({
+    el: '.photo-edit-grid',
+    created: function created() {
+        console.log(this);
+    },
+    methods: {
+        addFileInput: function addFileInput() {
+            alert("Adding new file input field");
+        }
+    }
 });
 
 /***/ }),

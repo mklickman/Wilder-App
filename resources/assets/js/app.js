@@ -20,3 +20,17 @@ Vue.component('delete-resource', require('./components/DeleteResourceComponent.v
 const app = new Vue({
     el: '#app'
 });
+
+const photoGrid = new Vue({
+    el: '.photo-edit-grid',
+    created: function() {
+        console.log(this);
+    },
+    methods: {
+        addFileInput: function() {
+            alert("Adding new file input field");
+        }
+    }
+})
+
+

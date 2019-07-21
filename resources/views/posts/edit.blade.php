@@ -21,18 +21,16 @@
                 <div class="form-group row">
                     <div class="col">
                         <div class="photo-edit-grid">
-                            {{-- @foreach ($post->getMedia() as $img) --}}
-                                {{-- <img src="/storage/{{ $img->id }}/{{ $img->file_name }}" alt="">    --}}
-                            {{-- @endforeach --}}
-                            @for($i = 0; $i < 10; $i++)
+                            @foreach ($post->getMedia() as $img)
                                 <div class="photo">
-                                    <input type="checkbox" name="photos_to_delete" value="{{ $post->getMedia()[0]->id }}">
+                                    <input type="checkbox" name="photos_to_delete[]" value="{{ $img->id }}">
                                     <i class="fas fa-trash-alt"></i>
                                     <span class="image-overlay"></span>
-                                    <img src="/storage/{{ $post->getMedia()[0]->id }}/{{ $post->getMedia()[0]->file_name }}" alt="">
+                                    <img src="/storage/{{ $img->id }}/{{ $img->file_name }}" alt="">
                                 </div>
-                            @endfor
+                            @endforeach
                             <div class="photo add-more">
+                                <input type="file" @change="addFileInput()">
                                 <i class="fas fa-plus"></i>
                             </div>
                             
